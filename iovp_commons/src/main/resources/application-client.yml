@@ -1,0 +1,5 @@
+####配置Eureka client连接注册中心信息
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9999/eureka/
