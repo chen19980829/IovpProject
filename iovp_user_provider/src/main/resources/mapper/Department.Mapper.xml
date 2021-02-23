@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdy.dao.DepartmentDao">
+	<select id="findListByQuery" parameterType="Department" resultMap="resultMap">
+		select
+			ipd.id,
+			ipd.name,
+			ipd.code,
+			ipd.status,
+			ipd.createUser,
+			ipd.createTime,
+			ipd.updateUser,
+			ipd.updateTime
+		from
+			iovp_department ipd
+		<where>
+			<trim suffixOverrides="and">
+				<if test="id!=null">ipd.id=#{id} and </if>
+				<if test="name!=null">ipd.name like concat('%',#{name},'%') and </if>
+				<if test="code!=null">ipd.code=#{code} and </if>
+				<if test="status!=null">ipd.status=#{status} and </if>
+			</trim>
+		</where>
+		order by ipd.createTime asc
+	</select>
+
+	<insert id="save" parameterType="Department">
+		insert into iovp_department(
+		    <trim suffixOverrides=",">
+			    <if test="id!=null">id,</if>
+			    <if test="name!=null">name,</if>
+			    <if test="code!=null">code,</if>
+			    <if test="status!=null">status,</if>
+			    <if test="createUser!=null">createUser,</if>
+			    <if test="createTime!=null">createTime,</if>
+			    <if test="updateUser!=null">updateUser,</if>
+			    <if test="updateTime!=null">updateTime,</if>
+		    </trim>
+		)values (
+		<trim suffixOverrides=",">
+			<if test="id!=null">#{id},</if>
+			<if test="name!=null">#{name},</if>
+			<if test="code!=null">#{code},</if>
+			<if test="status!=null">#{status},</if>
+			<if test="createUser!=null">#{createUser},</if>
+			<if test="createTime!=null">#{createTime},</if>
+			<if test="updateUser!=null">#{updateUser},</if>
+			<if test="updateTime!=null">#{updateTime},</if>
+		</trim>
+		)
+	</insert>
+
+	<update id="update" parameterType="Department">
+		update iovp_department
+		<set>
+			<if test="name!=null">name=#{name},</if>
+			<if test="code!=null">code=#{code},</if>
+			<if test="status!=null">status=#{status},</if>
+			<if test="createUser!=null">createUser=#{createUser},</if>
+			<if test="createTime!=null">createTime=#{createTime},</if>
+			<if test="updateUser!=null">updateUser=#{updateUser},</if>
+			<if test="updateTime!=null">updateTime=#{updateTime},</if>
+		</set>
+		<where>
+			<trim suffixOverrides="and">
+				<if test="id!=null">ipd.id=#{id} and </if>
+			</trim>
+		</where>
+	</update>
+
+
+
+	<resultMap id="resultMap" type="Department">
+		<id property="id" javaType="java.lang.String" column="id"></id>
+		<result property="name" javaType="java.lang.String" column="name"></result>
+		<result property="code" javaType="java.lang.Integer" column="code"></result>
+		<result property="status" javaType="java.lang.String" column="status"></result>
+		<result property="createUser" javaType="java.lang.String" column="createUser"></result>
+		<result property="createTime" javaType="java.util.Date" column="createTime"></result>
+		<result property="updateUser" javaType="java.lang.String" column="updateUser"></result>
+		<result property="updateTime" javaType="java.util.Date" column="updateTime"></result>
+	</resultMap>
+</mapper>

@@ -1,0 +1,9 @@
+#####配置项目启动端口号
+server:
+  port: 8899
+spring:
+  application:
+    name: iovp_user_provider
+  #####项目加载配置文件
+  profiles:
+    active: client, data

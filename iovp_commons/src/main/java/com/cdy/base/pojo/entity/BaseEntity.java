@@ -11,9 +11,9 @@ import java.util.Date;
  */
 public class BaseEntity implements Serializable {
 	private Integer status;
-	private Long createUser;
+	private String createUser;
 	private Date createTime;
-	private Long updateUser;
+	private String updateUser;
 	private Date updateTime;
 
 	public Integer getStatus() {
@@ -24,11 +24,11 @@ public class BaseEntity implements Serializable {
 		this.status = status;
 	}
 
-	public Long getCreateUser() {
+	public String getCreateUser() {
 		return createUser;
 	}
 
-	public void setCreateUser(Long createUser) {
+	public void setCreateUser(String createUser) {
 		this.createUser = createUser;
 	}
 
@@ -40,11 +40,11 @@ public class BaseEntity implements Serializable {
 		this.createTime = createTime;
 	}
 
-	public Long getUpdateUser() {
+	public String getUpdateUser() {
 		return updateUser;
 	}
 
-	public void setUpdateUser(Long updateUser) {
+	public void setUpdateUser(String updateUser) {
 		this.updateUser = updateUser;
 	}
 
