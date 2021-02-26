@@ -53,6 +53,11 @@
       <artifactId>pagehelper-spring-boot-starter</artifactId>
       <version>1.3.0</version>
     </dependency>
+    <!-- 配置spring-boot-starter-data-redis依赖关系 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
 
 
     <dependency>
